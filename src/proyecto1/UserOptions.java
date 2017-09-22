@@ -23,6 +23,8 @@ import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import java.awt.Image;
+import java.util.Date;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class UserOptions extends JFrame{
     JButton estado;
@@ -37,9 +39,9 @@ public class UserOptions extends JFrame{
     JLabel reimpre;
     JLabel graph;
     JPanel panel;
-    int estilo,poc;
+    int estiloo,poc;
     public UserOptions(int estilo,int pocicion){
-        this.estilo=estilo;
+        this.estiloo=estilo;
         this.poc=pocicion;
         setTitle("Usuario");
         //configuracin de botones
@@ -49,8 +51,9 @@ public class UserOptions extends JFrame{
         estado.setBackground(Color.WHITE);
         estado.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                //aca llamar a jframe de asignar denominacion de billetes
-                
+                setVisible(false);
+                EstadoCuenta a=new EstadoCuenta(estiloo,poc);
+                a.setVisible(true);
             }
         });
         
@@ -117,7 +120,7 @@ public class UserOptions extends JFrame{
         Font g = new Font( "Calibri",Font.BOLD,15 );
         est=new JLabel();
         est.setText("Estado de Cuenta");
-        if(this.estilo==1){
+        if(this.estiloo==1){
           est.setFont(f);  
         }else{
         est.setFont(g);}
@@ -125,7 +128,7 @@ public class UserOptions extends JFrame{
         
         transfe=new JLabel();
         transfe.setText("Transferencias");
-        if(this.estilo==1){
+        if(this.estiloo==1){
           transfe.setFont(f);  
         }else{
         transfe.setFont(g);}
@@ -133,7 +136,7 @@ public class UserOptions extends JFrame{
         
         ret=new JLabel();
         ret.setText("Retiros");
-        if(this.estilo==1){
+        if(this.estiloo==1){
           ret.setFont(f);  
         }else{
         ret.setFont(g);}
@@ -141,7 +144,7 @@ public class UserOptions extends JFrame{
         
         reimpre=new JLabel();
         reimpre.setText("Reimprecion");
-        if(this.estilo==1){
+        if(this.estiloo==1){
           reimpre.setFont(f);  
         }else{
         reimpre.setFont(g);}
@@ -149,7 +152,7 @@ public class UserOptions extends JFrame{
         
         graph=new JLabel();
         graph.setText("Graficas");
-        if(this.estilo==1){
+        if(this.estiloo==1){
           graph.setFont(f);  
         }else{
         graph.setFont(g);}
@@ -169,7 +172,7 @@ public class UserOptions extends JFrame{
         panel.add(ret);
         panel.add(reimpre);
         panel.add(graph);
-        if(this.estilo==1){
+        if(this.estiloo==1){
             panel.setBackground(Color.GRAY);
             
         }else{
@@ -185,8 +188,135 @@ public class UserOptions extends JFrame{
 class EstadoCuenta extends JFrame{
     JLabel nombre;
     JLabel saldo;
-    
+    JLabel fecha;
+    JButton regresar;
+    JLabel hora;
+    JLabel nom;
+    JLabel fec;
+    JLabel sal;
+    JLabel ho;
+    JPanel panel;
+    int est,pos;
     EstadoCuenta(int estilo,int pocicion){
+       est=estilo;
+       pos=pocicion;
+       setTitle("Estado De Cuenta");
+       //inicio configuracion de labels
+       Font f = new Font( "Microsoft PhagsPa",Font.ITALIC,25 );
+        Font g = new Font( "Calibri",Font.BOLD,25 );
+        nombre=new JLabel();
+        nombre.setText("Nombre");
+        if(this.est==1){
+          nombre.setFont(f);  
+        }else{
+        nombre.setFont(g);}
+        nombre.setBounds(50, 50, 200, 30);
+        
+        saldo=new JLabel();
+        saldo.setText("Saldo");
+        if(this.est==1){
+          saldo.setFont(f);  
+        }else{
+        saldo.setFont(g);}
+        saldo.setBounds(50, 100, 200, 30);
+        
+        fecha=new JLabel();
+        fecha.setText("Fecha");
+        if(this.est==1){
+          fecha.setFont(f);  
+        }else{
+        fecha.setFont(g);}
+        fecha.setBounds(50, 150, 200, 30); 
+        
+        hora=new JLabel();
+        hora.setText("Hora");
+        if(this.est==1){
+          hora.setFont(f);  
+        }else{
+        hora.setFont(g);}
+        hora.setBounds(50, 200, 200, 30);
+       //fin de configuracion de labels
+       //configuracion de labels para obteer nombres y saldo etc
+        nom=new JLabel();
+        nom.setText(Proyecto1.usuarios[pos].getnombre());
+        if(this.est==1){
+          nom.setFont(f);  
+          nom.setForeground(Color.green);
+        }else{
+        nom.setFont(g);}
+        nom.setBounds(150, 50, 200, 30);
+        
+        sal=new JLabel();
+        sal.setText(Integer.toString(Proyecto1.usuarios[pos].getsaldo()));
+        if(this.est==1){
+          sal.setFont(f);
+          sal.setForeground(Color.green);
+        }else{
+        sal.setFont(g);}
+        sal.setBounds(150, 100, 200, 30);
+        Date dia = new Date(System.currentTimeMillis()); 
+
+        fec=new JLabel();
+        fec.setText("Fecha");
+        fec.setText(dia.getDay() + "/" +dia.getMonth() + "/"+(dia.getYear()+1900) ) ;
+        if(this.est==1){
+          fec.setFont(f);
+          fec.setForeground(Color.green);
+        }else{
+        fec.setFont(g);}
+        fec.setBounds(150, 150, 200, 30); 
+        
+        ho=new JLabel();
+        ho.setText(Long.toString(dia.getTime()));
+        if(this.est==1){
+          ho.setFont(f);  
+          ho.setForeground(Color.green);
+        }else{
+        ho.setFont(g);}
+        ho.setBounds(150, 200, 200, 30);
+       //fin de configuracion de labels para obtener nombres saldos etc
+       //configuracin de boton para regresar
+        regresar=new JButton();
+        regresar.setText("Inicio");
+        regresar.setBounds(20, 10, 80, 20);
+        regresar.setBackground(Color.white);
+        regresar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            setVisible(false);     
+            UserOptions jk= new UserOptions(est,pos);
+            jk.setVisible(true);
+            }
+        });
+       //fin configuracion de boton para regresar
+       //agregacion al jpanel
+        panel=new JPanel();
+        panel.setLayout(null);
+        panel.add(nombre);
+        panel.add(saldo);
+        panel.add(fecha);
+        panel.add(hora);
+        panel.add(regresar);
+        panel.add(nom);
+        panel.add(sal);
+        panel.add(fec);
+        panel.add(ho);
+      
+        if(this.est==1){
+            panel.setBackground(Color.GRAY);
+            
+        }else{
+            panel.setBackground(Color.getHSBColor(108, 75, 42));
+        }
+        add(panel);
+        setSize(500, 300);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //fin de agregacion al jpanel
+    }
+}
+
+class Retiros extends JFrame{
+    
+    public Retiros(){
         
     }
 }

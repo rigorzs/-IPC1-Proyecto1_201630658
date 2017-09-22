@@ -217,7 +217,7 @@ class moduloadmin extends JFrame{
     String empresa,nom,con,us;
     int sali,montmax;
     Proyecto1 vec=new Proyecto1();
-    int contador=0,n;
+    int contador=Proyecto1.posicion,n;
    // final JFrame AdminOptions;
     public moduloadmin(){
        
@@ -364,5 +364,6 @@ class moduloadmin extends JFrame{
     public void agregar(){
         vec.usuarios[contador]=new agregarusuarios(nom,con,us,sali,montmax,n,empresa);
         contador++;
+        Proyecto1.posicion=contador;
     }
 }

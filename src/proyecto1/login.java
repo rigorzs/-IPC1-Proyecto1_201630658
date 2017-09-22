@@ -69,9 +69,10 @@ public class login extends JFrame{
         login.setBackground(Color.white);
         login.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                
+             //JOptionPane.showMessageDialog(null, "usuario no encontrado");
              if(administrador.equals(textfield1.getText())&& cont.equals(clave.getText())){ 
                   setVisible(false);
+                  JOptionPane.showMessageDialog(null, "Bienvenido Administrador");
                   textfield1.setText("");
                   clave.setText("");
                   AdminOptions jk=new AdminOptions();
@@ -81,8 +82,7 @@ public class login extends JFrame{
                  // System.out.println(Proyecto1.usuarios[i].getnombre()+Proyecto1.usuarios[i].getcontra()+Proyecto1.usuarios[i].getusuario());
                   if(Proyecto1.usuarios[i].getusuario().equals(textfield1.getText()) && Proyecto1.usuarios[i].getcontra().equals(clave.getText())){
                       setVisible(false);
-                      Proyecto1.bandera=Proyecto1.usuarios[i].getestilo();
-                      Proyecto1.posicion=i;
+                      JOptionPane.showMessageDialog(null, "Bienvenido "+Proyecto1.usuarios[i].getnombre());
                       pos=i;
                       est=Proyecto1.usuarios[i].getestilo();
                       UserOptions pq;
@@ -92,8 +92,9 @@ public class login extends JFrame{
                 //  System.out.println(Proyecto1.usuarios[i].getnombre()+Proyecto1.usuarios[i].getcontra()+Proyecto1.usuarios[i].getusuario());
               }
              }
-             }
-            
+              textfield1.setText("");
+              clave.setText("");
+             } 
         });
         //fin insetar boton y configuracion del evento
         //llamada de los componenetes anteriores para mostrarlos en el jframe
