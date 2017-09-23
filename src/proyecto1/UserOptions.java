@@ -112,11 +112,13 @@ public class UserOptions extends JFrame{
                 login jk=new login();
                 //aca regersa al jframe de login y oculta el jframe acutal
                 setVisible(false);
-                jk.setVisible(true);
+                
                 if(estiloo==1){
                     JOptionPane.showMessageDialog(null, "Gracias Por Usar Nuestros Servicios "+Proyecto1.usuarios[poc].getnombre()+" Att: Pro-Pisto");
+                    jk.setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "Gracias Por Usar Nuestros Servicios "+Proyecto1.usuarios[poc].getnombre()+" Att: Cash-Money");
+                    jk.setVisible(true);
                 }
                 //adminoptions.setVisible(false);
                // login.setVisible(true);
@@ -388,7 +390,7 @@ class Retiros extends JFrame{
                     Proyecto1.cant100=Proyecto1.cant100-1;
                     Proyecto1.motocajeto=Proyecto1.motocajeto-100;
                     j=Proyecto1.usuarios[poc].getsaldo();
-                    k=j-50;
+                    k=j-100;
                     Proyecto1.usuarios[poc].setsaldo(k);
                     System.out.println("ha recibido Q.100.00");
                     System.out.println("");
