@@ -79,7 +79,9 @@ public class AdminOptions extends JFrame{
         adminoptions.add(denoadmin);
         adminoptions.add(modadmin);
         adminoptions.setBackground(new Color(15,181,231));
+                adminoptions.setBackground(Color.lightGray);
         add(adminoptions);
+        setLocation(300, 100);
         setSize(500,400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }      
@@ -191,6 +193,8 @@ class denominacion extends JFrame{
         Deno.add(Asignar);
         Deno.add(Regresar);
         add(Deno);
+        setLocation(300, 100);
+                Deno.setBackground(Color.lightGray);
         setSize(400,500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -202,8 +206,9 @@ class moduloadmin extends JFrame{
     JLabel user;
     JLabel saldo;
     JLabel banco;
-    JRadioButton propisto;
-    JRadioButton cashmoney;
+    ButtonGroup radios;
+    JRadioButtonMenuItem propisto;
+    JRadioButtonMenuItem cashmoney;
     JRadioButtonMenuItem menu;
     JLabel montomax;
     JTextField textbox1;
@@ -315,27 +320,32 @@ class moduloadmin extends JFrame{
         //fin configuracion de botones
         //configuracion de radiobuttons
         //menu=new JRadioButtonMenuItem();
-        cashmoney=new JRadioButton();
+        radios=new ButtonGroup();
+        
+        cashmoney=new JRadioButtonMenuItem();
         cashmoney.setText("Cash Money");
         cashmoney.setBounds(20, 320, 100, 40);
         cashmoney.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                propisto.setEnabled(false);
+                //propisto.setEnabled(false);
+                propisto.resetKeyboardActions();
                 empresa="cashmoney";
-                n=1;
+                n=0;
             }
         });
-        propisto=new JRadioButton();
+        propisto=new JRadioButtonMenuItem();
         propisto.setText("Pro-Pisto");
         propisto.setBounds(150, 320, 100, 40);
         propisto.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                cashmoney.setEnabled(false);
-                //cashmoney
+                //cashmoney.setEnabled(false);
+                cashmoney.resetKeyboardActions();
                 empresa="propisto";
-                n=0;
+                n=1;
             }
         });
+        radios.add(cashmoney);
+        radios.add(propisto);
         /*menu.add(cashmoney);
         menu.add(propisto);*/
         //fin configuracion de radiobuttons
@@ -358,8 +368,9 @@ class moduloadmin extends JFrame{
         panel.add(regresar);
         panel.add(aceptar);
         add(panel);
+                panel.setBackground(Color.lightGray);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400,500);
+        setSize(400,500);setLocation(300, 100);
     }
     public void agregar(){
         vec.usuarios[contador]=new agregarusuarios(nom,con,us,sali,montmax,n,empresa);

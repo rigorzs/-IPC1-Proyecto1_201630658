@@ -35,8 +35,8 @@ public class login extends JFrame{
     JLabel contra;   
     JPanel panelogin;
     int pos,est;
-    private String administrador="a";
-    private String cont="a";
+    private String administrador="ipc1Admin";
+    private String cont="aux1";
     
     public login(){
         //titulo del jframe
@@ -105,9 +105,14 @@ public class login extends JFrame{
         panelogin.add(contra);
         panelogin.add(clave);
         panelogin.add(login);
+        //panelogin.setBackground(Color.getHSBColor(187, 28, 68));
+        panelogin.setBackground(Color.lightGray);
+        //panelogin.setBackground(Color.getHSBColor(320, 57, 77));
         add(panelogin);
-        this.setSize(400,500);
+        setLocation(300, 100);
+        this.setSize(400,400);
 	this.setVisible(true);
+        
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         //fin de la llamada de los componentes al jframe
     }

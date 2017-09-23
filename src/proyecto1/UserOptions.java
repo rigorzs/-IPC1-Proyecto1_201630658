@@ -305,10 +305,11 @@ class EstadoCuenta extends JFrame{
             panel.setBackground(Color.GRAY);
             
         }else{
-            panel.setBackground(Color.getHSBColor(108, 75, 42));
+            panel.setBackground(Color.green);
         }
         add(panel);
         setSize(500, 300);
+        setLocation(300, 100);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //fin de agregacion al jpanel
     }
@@ -317,6 +318,9 @@ class EstadoCuenta extends JFrame{
 class Retiros extends JFrame{
     
     public Retiros(){
+        setTitle("Retiros");
+        //inicio de configuracion de labels de descripcion
         
+        //fin configuracion de labels de descricion
     }
 }
