@@ -75,7 +75,9 @@ public class UserOptions extends JFrame{
         retiro.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 //aca llamar a jframe de asignar denominacion de billetes
-                
+               setVisible(false);
+                Retiros b=new Retiros(estiloo,poc);
+                b.setVisible(true);
             }
         });
         
@@ -111,6 +113,11 @@ public class UserOptions extends JFrame{
                 //aca regersa al jframe de login y oculta el jframe acutal
                 setVisible(false);
                 jk.setVisible(true);
+                if(estiloo==1){
+                    JOptionPane.showMessageDialog(null, "Gracias Por Usar Nuestros Servicios "+Proyecto1.usuarios[poc].getnombre()+" Att: Pro-Pisto");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Gracias Por Usar Nuestros Servicios "+Proyecto1.usuarios[poc].getnombre()+" Att: Cash-Money");
+                }
                 //adminoptions.setVisible(false);
                // login.setVisible(true);
             }
@@ -180,6 +187,7 @@ public class UserOptions extends JFrame{
         }
         add(panel);
         setSize(500, 500);
+                setLocation(300, 100);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //fin de agregacion alpanel
         
@@ -316,11 +324,270 @@ class EstadoCuenta extends JFrame{
 }
 
 class Retiros extends JFrame{
-    
-    public Retiros(){
+    JButton b50;
+    JButton b100;
+    JButton b150;
+    JButton b200;
+    JButton b250;
+    JButton b500;
+    JButton regresar;
+    JLabel bi50;
+    JLabel bi100;
+    JLabel bi150;
+    JLabel bi200;
+    JLabel bi250;
+    JPanel panel;
+    JLabel bi500;
+    int estiloo=0,poc=0;
+    public Retiros(int estilo, int pocicion){
+        this.estiloo=estilo;
+        this.poc=pocicion;
         setTitle("Retiros");
-        //inicio de configuracion de labels de descripcion
+               //configuracin de botones
+        b50=new JButton();
+        b50.setText("");
+        b50.setBounds(50, 50, 50, 30);
+        b50.setBackground(Color.WHITE);
+        b50.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(Proyecto1.motocajeto>50){
+                    if(50<Proyecto1.usuarios[poc].getmontomax()){
+                    int j,k;
+                    Proyecto1.cant50=Proyecto1.cant50-1;
+                    Proyecto1.motocajeto=Proyecto1.motocajeto-50;
+                    j=Proyecto1.usuarios[poc].getsaldo();
+                    k=j-50;
+                    Proyecto1.usuarios[poc].setsaldo(k);
+                    System.out.println("ha recibido Q.50.00");
+                    System.out.println("");
+                    System.out.println("el monto del cajero es de "+Proyecto1.motocajeto);
+                    System.out.println("catidad billetes de 50  "+Proyecto1.cant50);
+                    System.out.println("catidad billetes de 100  "+Proyecto1.cant100);
+                    System.out.println("catidad billetes de 200  "+Proyecto1.cant200);
+                    setVisible(false);     
+                    UserOptions jk= new UserOptions(estiloo,poc);
+                    jk.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "La cntidad deseada sobrepasa el monto maximo");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cajero no cuenta con suficiente dinero");
+                }
+            }
+        });
         
-        //fin configuracion de labels de descricion
+        b100=new JButton();
+        b100.setText("");
+        b100.setBounds(50, 100, 50, 30);
+        b100.setBackground(Color.WHITE);
+        b100.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                if(Proyecto1.motocajeto>100){
+                    if(100<Proyecto1.usuarios[poc].getmontomax()){
+                    int j,k;
+                    Proyecto1.cant100=Proyecto1.cant100-1;
+                    Proyecto1.motocajeto=Proyecto1.motocajeto-100;
+                    j=Proyecto1.usuarios[poc].getsaldo();
+                    k=j-50;
+                    Proyecto1.usuarios[poc].setsaldo(k);
+                    System.out.println("ha recibido Q.100.00");
+                    System.out.println("");
+                    System.out.println("el monto del cajero es de "+Proyecto1.motocajeto);
+                    System.out.println("catidad billetes de 50  "+Proyecto1.cant50);
+                    System.out.println("catidad billetes de 100  "+Proyecto1.cant100);
+                    System.out.println("catidad billetes de 200  "+Proyecto1.cant200);
+                    setVisible(false);     
+                    UserOptions jk= new UserOptions(estiloo,poc);
+                    jk.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "La cntidad deseada sobrepasa el monto maximo");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cajero no cuenta con suficiente dinero");
+                }
+                
+            }
+        });
+        
+        b150=new JButton();
+        b150.setText("");
+        b150.setBounds(50, 150,50, 30);
+        b150.setBackground(Color.WHITE);
+        b150.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //aca llamar a jframe de asignar denominacion de billetes
+                if(Proyecto1.motocajeto>150){
+                    if(150<Proyecto1.usuarios[poc].getmontomax()){
+                    int j,k;
+                    Proyecto1.cant50=Proyecto1.cant50-1;
+                    Proyecto1.cant100=Proyecto1.cant100-1;
+                    Proyecto1.motocajeto=Proyecto1.motocajeto-150;
+                    j=Proyecto1.usuarios[poc].getsaldo();
+                    k=j-150;
+                    Proyecto1.usuarios[poc].setsaldo(k);
+                    System.out.println("ha recibido Q.150.00");
+                    System.out.println("");
+                    System.out.println("el monto del cajero es de "+Proyecto1.motocajeto);
+                    System.out.println("catidad billetes de 50  "+Proyecto1.cant50);
+                    System.out.println("catidad billetes de 100  "+Proyecto1.cant100);
+                    System.out.println("catidad billetes de 200  "+Proyecto1.cant200);
+                    setVisible(false);     
+                    UserOptions jk= new UserOptions(estiloo,poc);
+                    jk.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "La cntidad deseada sobrepasa el monto maximo");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cajero no cuenta con suficiente dinero");
+                }
+            }
+        });
+        
+        b200=new JButton();
+        b200.setText("");
+        b200.setBounds(50, 200, 50, 30);
+        b200.setBackground(Color.WHITE);
+        b200.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //aca llamar a jframe de asignar denominacion de billetes
+                if(Proyecto1.motocajeto>200){
+                    if(200<Proyecto1.usuarios[poc].getmontomax()){
+                    int j,k;
+                   // Proyecto1.cant50=Proyecto1.cant50-1;
+                    Proyecto1.cant200=Proyecto1.cant200-1;
+                    Proyecto1.motocajeto=Proyecto1.motocajeto-200;
+                    j=Proyecto1.usuarios[poc].getsaldo();
+                    k=j-200;
+                    Proyecto1.usuarios[poc].setsaldo(k);
+                    System.out.println("ha recibido Q.200.00");
+                    System.out.println("");
+                    System.out.println("el monto del cajero es de "+Proyecto1.motocajeto);
+                    System.out.println("catidad billetes de 50  "+Proyecto1.cant50);
+                    System.out.println("catidad billetes de 100  "+Proyecto1.cant100);
+                    System.out.println("catidad billetes de 200  "+Proyecto1.cant200);
+                    setVisible(false);     
+                    UserOptions jk= new UserOptions(estiloo,poc);
+                    jk.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "La cntidad deseada sobrepasa el monto maximo");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cajero no cuenta con suficiente dinero");
+                }
+            }
+        });
+        
+        b500=new JButton();
+        b500.setText("");
+        b500.setBounds(50, 250, 50, 30);
+        b500.setBackground(Color.WHITE);
+        b500.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                //aca llamar a jframe de asignar denominacion de billetes
+                if(Proyecto1.motocajeto>500){
+                    if(500<Proyecto1.usuarios[poc].getmontomax()){
+                    int j,k;
+                    Proyecto1.cant200=Proyecto1.cant200-2;
+                    Proyecto1.cant100=Proyecto1.cant100-1;
+                    Proyecto1.motocajeto=Proyecto1.motocajeto-500;
+                    j=Proyecto1.usuarios[poc].getsaldo();
+                    k=j-500;
+                    Proyecto1.usuarios[poc].setsaldo(k);
+                    System.out.println("ha recibido Q.500.00");
+                    System.out.println("");
+                    System.out.println("el monto del cajero es de "+Proyecto1.motocajeto);
+                    System.out.println("catidad billetes de 50  "+Proyecto1.cant50);
+                    System.out.println("catidad billetes de 100  "+Proyecto1.cant100);
+                    System.out.println("catidad billetes de 200  "+Proyecto1.cant200);
+                    setVisible(false);     
+                    UserOptions jk= new UserOptions(estiloo,poc);
+                    jk.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "La cntidad deseada sobrepasa el monto maximo");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cajero no cuenta con suficiente dinero");
+                }
+            }
+        });
+        
+        regresar=new JButton();
+        regresar.setText("Inicio");
+        regresar.setBounds(20, 10, 80, 20);
+        regresar.setBackground(Color.white);
+        regresar.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            setVisible(false);     
+            UserOptions jk= new UserOptions(estiloo,poc);
+            jk.setVisible(true);
+            }
+        });
+        //dconfiguracion de labels
+        Font f = new Font( "Microsoft PhagsPa",Font.ITALIC,15 );
+        Font g = new Font( "Calibri",Font.BOLD,15 );
+        bi50=new JLabel();
+        bi50.setText("Q.50.00");
+        if(this.estiloo==1){
+          bi50.setFont(f);  
+        }else{
+        bi50.setFont(g);}
+        bi50.setBounds(130, 50, 200, 30);
+        
+        bi100=new JLabel();
+        bi100.setText("Q.100.00");
+        if(this.estiloo==1){
+          bi100.setFont(f);  
+        }else{
+        bi100.setFont(g);}
+        bi100.setBounds(130, 100, 100, 30);
+        
+        bi150=new JLabel();
+        bi150.setText("Q.150.00");
+        if(this.estiloo==1){
+          bi150.setFont(f);  
+        }else{
+        bi150.setFont(g);}
+        bi150.setBounds(130, 150, 100, 30);
+        
+        bi200=new JLabel();
+        bi200.setText("Q.200.00");
+        if(this.estiloo==1){
+          bi200.setFont(f);  
+        }else{
+        bi200.setFont(g);}
+        bi200.setBounds(130, 200, 100, 30);
+        
+        bi500=new JLabel();
+        bi500.setText("Q.500.00");
+        if(this.estiloo==1){
+          bi500.setFont(f);  
+        }else{
+        bi500.setFont(g);}
+        bi500.setBounds(130, 250, 100, 30);
+        //fin de configuracion de labels
+        //agregacion al panel
+        panel=new JPanel();
+        panel.setLayout(null);
+        panel.add(b50);
+        panel.add(b100);
+        panel.add(b150);
+        panel.add(b200);
+        panel.add(b500);
+        panel.add(bi50);
+        panel.add(bi100);
+        panel.add(bi150);
+        panel.add(bi200);
+        panel.add(bi500);
+        panel.add(regresar);
+        if(this.estiloo==1){
+            panel.setBackground(Color.GRAY);
+            
+        }else{
+            panel.setBackground(Color.getHSBColor(108, 75, 42));
+        }
+        add(panel);
+        setSize(300, 400);
+                setLocation(300, 100);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }

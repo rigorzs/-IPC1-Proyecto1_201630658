@@ -175,7 +175,10 @@ class denominacion extends JFrame{
                setVisible(false);     
                 AdminOptions.setVisible(true);
               //aca se agrega la configuacion global de el cajero a una variable
-               
+             System.out.println("el monto del cajero es de "+Proyecto1.motocajeto);
+             System.out.println("catidad billetes de 50  "+Proyecto1.cant50);
+             System.out.println("catidad billetes de 100  "+Proyecto1.cant100);
+             System.out.println("catidad billetes de 200  "+Proyecto1.cant200);
             }
         });
         
@@ -289,7 +292,7 @@ class moduloadmin extends JFrame{
             AdminOptions jk= new AdminOptions();
             jk.setVisible(true);
            for(int i=0;i<=10;i++){
-                System.out.println(vec.usuarios[i].getnombre()+" "+vec.usuarios[i].getcontra()+" "+vec.usuarios[i].getusuario());
+                System.out.println(vec.usuarios[i].getnombre()+" "+vec.usuarios[i].getcontra()+" "+vec.usuarios[i].getusuario()+" "+vec.usuarios[i].getempresa()+" "+vec.usuarios[i].getsaldo()+" "+vec.usuarios[i].getmontomax());
             }
             }
         });
@@ -368,9 +371,10 @@ class moduloadmin extends JFrame{
         panel.add(regresar);
         panel.add(aceptar);
         add(panel);
-                panel.setBackground(Color.lightGray);
+        panel.setBackground(Color.lightGray);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(400,500);setLocation(300, 100);
+                setLocation(300, 100);
     }
     public void agregar(){
         vec.usuarios[contador]=new agregarusuarios(nom,con,us,sali,montmax,n,empresa);
